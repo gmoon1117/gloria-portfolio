@@ -5,44 +5,42 @@ import { home, caseStudies, otherWork, site } from '../data/content';
 ---
 
 <BaseLayout title={site.tagline}>
-  <div class="home-art-wrap">
-    <section class="hero">
-      <div class="hero-intro">
-        <div class="container">
-          <h1 class="hero-name">{site.firstName} {site.lastName}</h1>
-          <p class="hero-tagline">{home.introLine}</p>
-        </div>
-      </div>
+  <section class="hero">
+    <div class="hero-intro">
       <div class="container">
-        <div class="project-grid">
-          {caseStudies.map((cs, i) => (
-            <ProjectCard
-              href={`/work/${cs.slug}`}
-              label={cs.cardLabel}
-              title={cs.title}
-              summary={cs.summary}
-              heroPlaceholderLabel={cs.heroPlaceholderLabel}
-              index={`0${i + 1}`}
-              featured={i === 0}
-            />
-          ))}
-        </div>
+        <h1 class="hero-name">{site.firstName} {site.lastName}</h1>
+        <p class="hero-tagline">{home.introLine}</p>
       </div>
-    </section>
+    </div>
+    <div class="container">
+      <div class="project-grid">
+        {caseStudies.map((cs, i) => (
+          <ProjectCard
+            href={`/work/${cs.slug}`}
+            label={cs.cardLabel}
+            title={cs.title}
+            summary={cs.summary}
+            heroPlaceholderLabel={cs.heroPlaceholderLabel}
+            index={`0${i + 1}`}
+            featured={i === 0}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
 
-    <section class="section other-work-section" style="padding-top: 0;">
-      <div class="container">
-        <h2>Other work</h2>
-        <div class="other-work-grid">
-          {otherWork.map((item) => (
-            <div class="other-work-card reveal">
-              {item.tag && <span class="tag">{item.tag}</span>}
-              <h3>{item.title}</h3>
-              <p class="muted">{item.description}</p>
-            </div>
-          ))}
-        </div>
+  <section class="section other-work-section" style="padding-top: 0;">
+    <div class="container">
+      <h2>Other work</h2>
+      <div class="other-work-grid">
+        {otherWork.map((item) => (
+          <div class="other-work-card reveal">
+            {item.tag && <span class="tag">{item.tag}</span>}
+            <h3>{item.title}</h3>
+            <p class="muted">{item.description}</p>
+          </div>
+        ))}
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </BaseLayout>
