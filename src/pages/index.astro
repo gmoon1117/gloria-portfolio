@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import CelestialMotif from '../components/CelestialMotif.astro';
 import { home, caseStudies, otherWork, site } from '../data/content';
 ---
 
 <BaseLayout title={site.tagline}>
   <section class="section hero">
+    <CelestialMotif />
     <div class="container">
       <span class="intro-badge">Hi, I’m {site.name} 👋</span>
       <h1>{home.introLine}</h1>
