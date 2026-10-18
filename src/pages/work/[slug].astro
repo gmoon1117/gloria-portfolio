@@ -24,11 +24,11 @@ const { cs } = Astro.props;
 
   <section class="section" style="padding-bottom: 32px;">
     <div class="container">
-      <a href="/" class="muted page-heading" style="font-size: 0.9rem;">&larr; Back to work</a>
-      <h1 class="page-heading" style="margin-top: 16px;">{cs.title}</h1>
-      <p class="muted page-heading" style="font-size: 1.1rem; max-width: 640px;">{cs.summary}</p>
+      <a href="/" class="muted" style="font-size: 0.9rem;">&larr; Back to work</a>
+      <h1 style="margin-top: 16px;">{cs.title}</h1>
+      <p class="muted" style="font-size: 1.1rem; max-width: 640px;">{cs.summary}</p>
 
-      <div class="cs-meta page-heading">
+      <div class="cs-meta">
         <div>
           <span class="label">Project type</span>
           {cs.projectType}
@@ -47,80 +47,88 @@ const { cs } = Astro.props;
     </div>
   </section>
 
-  <section class="section" style="padding-top: 0;">
+  <section class="cs-section reveal">
     <div class="container">
-      <div class="glass-panel cs-panel">
-        <div class="cs-section reveal">
-          <div class="cs-section-head">
-            <span class="cs-section-num">01</span>
-            <h2>Context &amp; problem</h2>
-          </div>
-          <p>{cs.context}</p>
-        </div>
-
-        <div class="cs-section reveal">
-          <div class="cs-section-head">
-            <span class="cs-section-num">02</span>
-            <h2>My role</h2>
-          </div>
-          <p>{cs.myRole}</p>
-        </div>
-
-        <div class="cs-section reveal">
-          <div class="cs-section-head">
-            <span class="cs-section-num">03</span>
-            <h2>Process</h2>
-          </div>
-          <h3>Research</h3>
-          <p>{cs.process.research}</p>
-          <PlaceholderImage label="Research artifact — notes, synthesis, or interview highlights" ratio="16/9" />
-
-          <h3 style="margin-top: 32px;">Iterations</h3>
-          <p>{cs.process.iterations}</p>
-          <PlaceholderImage label="Early concepts / wireframes / iteration screenshots" ratio="16/9" />
-        </div>
-
-        <div class="cs-section reveal">
-          <div class="cs-section-head">
-            <span class="cs-section-num">04</span>
-            <h2>Key design decisions &amp; why</h2>
-          </div>
-          <div class="decision-list">
-            {cs.decisions.map((d, i) => (
-              <div class="decision">
-                <span class="decision-num">{i + 1}</span>
-                <div>
-                  <h3>{d.title}</h3>
-                  <p class="muted">{d.why}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {cs.beforeAfter && (
-          <div class="cs-section reveal">
-            <h2>Before &amp; after</h2>
-            <BeforeAfter beforeLabel={cs.beforeAfter.beforeLabel} afterLabel={cs.beforeAfter.afterLabel} />
-          </div>
-        )}
-
-        <div class="cs-section reveal">
-          <div class="cs-section-head">
-            <span class="cs-section-num">05</span>
-            <h2>Outcome</h2>
-          </div>
-          <p>{cs.outcome}</p>
-        </div>
-
-        <div class="cs-section reveal">
-          <div class="cs-section-head">
-            <span class="cs-section-num">06</span>
-            <h2>What I’d do next</h2>
-          </div>
-          <p>{cs.next}</p>
-        </div>
+      <div class="cs-section-head">
+        <span class="cs-section-num">01</span>
+        <h2>Context &amp; problem</h2>
       </div>
+      <p>{cs.context}</p>
+    </div>
+  </section>
+
+  <section class="cs-section reveal">
+    <div class="container">
+      <div class="cs-section-head">
+        <span class="cs-section-num">02</span>
+        <h2>My role</h2>
+      </div>
+      <p>{cs.myRole}</p>
+    </div>
+  </section>
+
+  <section class="cs-section reveal">
+    <div class="container">
+      <div class="cs-section-head">
+        <span class="cs-section-num">03</span>
+        <h2>Process</h2>
+      </div>
+      <h3>Research</h3>
+      <p>{cs.process.research}</p>
+      <PlaceholderImage label="Research artifact — notes, synthesis, or interview highlights" ratio="16/9" />
+
+      <h3 style="margin-top: 32px;">Iterations</h3>
+      <p>{cs.process.iterations}</p>
+      <PlaceholderImage label="Early concepts / wireframes / iteration screenshots" ratio="16/9" />
+    </div>
+  </section>
+
+  <section class="cs-section reveal">
+    <div class="container">
+      <div class="cs-section-head">
+        <span class="cs-section-num">04</span>
+        <h2>Key design decisions &amp; why</h2>
+      </div>
+      <div class="decision-list">
+        {cs.decisions.map((d, i) => (
+          <div class="decision">
+            <span class="decision-num">{i + 1}</span>
+            <div>
+              <h3>{d.title}</h3>
+              <p class="muted">{d.why}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {cs.beforeAfter && (
+    <section class="cs-section reveal">
+      <div class="container">
+        <h2>Before &amp; after</h2>
+        <BeforeAfter beforeLabel={cs.beforeAfter.beforeLabel} afterLabel={cs.beforeAfter.afterLabel} />
+      </div>
+    </section>
+  )}
+
+  <section class="cs-section reveal">
+    <div class="container">
+      <div class="cs-section-head">
+        <span class="cs-section-num">05</span>
+        <h2>Outcome</h2>
+      </div>
+      <p>{cs.outcome}</p>
+    </div>
+  </section>
+
+  <section class="cs-section reveal">
+    <div class="container">
+      <div class="cs-section-head">
+        <span class="cs-section-num">06</span>
+        <h2>What I’d do next</h2>
+      </div>
+      <p>{cs.next}</p>
     </div>
   </section>
 

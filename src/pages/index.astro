@@ -5,6 +5,8 @@ import { home, caseStudies, otherWork, site } from '../data/content';
 ---
 
 <BaseLayout title={site.tagline}>
+  <div class="art-parallax" id="art-parallax" aria-hidden="true"></div>
+
   <section class="hero">
     <div class="hero-intro">
       <div class="container">
@@ -45,3 +47,18 @@ import { home, caseStudies, otherWork, site } from '../data/content';
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const artEl = document.getElementById('art-parallax');
+  if (artEl) {
+    const update = () => {
+      const doc = document.documentElement;
+      const scrollable = Math.max(doc.scrollHeight - window.innerHeight, 1);
+      const progress = Math.min(Math.max(window.scrollY / scrollable, 0), 1);
+      artEl.style.backgroundPositionY = `${progress * 100}%`;
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  }
+</script>

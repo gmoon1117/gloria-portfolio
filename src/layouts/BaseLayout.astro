@@ -33,9 +33,6 @@ const { title, description = site.description } = Astro.props;
     </noscript>
   </head>
   <body>
-    <div class="art-parallax" aria-hidden="true">
-      <div class="art-parallax-layer" id="art-parallax-layer"></div>
-    </div>
     <Nav />
     <script is:inline>
       (function () {
@@ -56,20 +53,6 @@ const { title, description = site.description } = Astro.props;
     </main>
     <Footer />
     <script>
-      const artLayer = document.getElementById('art-parallax-layer');
-      if (artLayer) {
-        const updateArtParallax = () => {
-          const doc = document.documentElement;
-          const scrollable = Math.max(doc.scrollHeight - window.innerHeight, 1);
-          const progress = Math.min(Math.max(window.scrollY / scrollable, 0), 1);
-          const maxPan = artLayer.offsetHeight - window.innerHeight;
-          artLayer.style.transform = `translateY(-${progress * Math.max(maxPan, 0)}px)`;
-        };
-        updateArtParallax();
-        window.addEventListener('scroll', updateArtParallax, { passive: true });
-        window.addEventListener('resize', updateArtParallax);
-      }
-
       const revealEls = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window && revealEls.length) {
         const io = new IntersectionObserver(
