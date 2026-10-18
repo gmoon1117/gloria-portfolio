@@ -140,12 +140,19 @@ p { margin: 0 0 1em; }
 
 /* ── Nav ── */
 .site-nav {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: saturate(140%) blur(8px);
   border-bottom: 1px solid var(--border);
+}
+
+main {
+  display: block;
+  padding-top: var(--nav-height, 64px);
 }
 
 .site-nav .container {

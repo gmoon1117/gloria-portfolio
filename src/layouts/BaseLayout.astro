@@ -34,6 +34,20 @@ const { title, description = site.description } = Astro.props;
   </head>
   <body>
     <Nav />
+    <script is:inline>
+      (function () {
+        function setNavHeight() {
+          var nav = document.querySelector('.site-nav');
+          if (!nav) return;
+          document.documentElement.style.setProperty('--nav-height', nav.offsetHeight + 'px');
+        }
+        setNavHeight();
+        window.addEventListener('resize', setNavHeight);
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(setNavHeight);
+        }
+      })();
+    </script>
     <main>
       <slot />
     </main>
