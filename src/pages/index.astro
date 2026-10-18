@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import CelestialMotif from '../components/CelestialMotif.astro';
+import MoonIcon from '../components/MoonIcon.astro';
 import { home, caseStudies, otherWork, site } from '../data/content';
 ---
 
@@ -9,7 +10,7 @@ import { home, caseStudies, otherWork, site } from '../data/content';
   <section class="section hero">
     <CelestialMotif />
     <div class="container">
-      <h1 class="hero-name">{site.firstName} <span class="name-accent">{site.lastName}</span></h1>
+      <h1 class="hero-name">{site.firstName} {site.lastName}<MoonIcon class="hero-name-moon" /></h1>
       <p class="hero-tagline">{home.introLine}</p>
       <p class="muted" style="max-width: 520px; font-size: 1.05rem;">{home.introSubline}</p>
 
@@ -32,7 +33,6 @@ import { home, caseStudies, otherWork, site } from '../data/content';
   <section class="section" style="padding-top: 0;">
     <div class="container">
       <h2>Other work</h2>
-      <p class="muted">Smaller projects that didn’t need a full case study.</p>
       <div class="other-work-grid">
         {otherWork.map((item) => (
           <div class="other-work-card reveal">

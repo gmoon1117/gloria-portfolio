@@ -1,4 +1,4 @@
-{/* Decorative crescent moon + scattered stars spanning the hero — a quiet nod to "Moon." Purely decorative: aria-hidden, no interaction. */}
+{/* Decorative scattered stars spanning the hero — the crescent moon itself sits inline next to "Moon" in the headline. Purely decorative: aria-hidden, no interaction. */}
 <svg
   class="celestial-motif"
   viewBox="0 0 1200 280"
@@ -7,20 +7,6 @@
   aria-hidden="true"
   focusable="false"
 >
-  <defs>
-    <linearGradient id="moon-grad" x1="10%" y1="0%" x2="90%" y2="100%">
-      <stop offset="0%" stop-color="#555555" />
-      <stop offset="100%" stop-color="#111111" />
-    </linearGradient>
-    <mask id="moon-mask">
-      <rect width="1200" height="280" fill="#fff" />
-      <circle cx="1095" cy="56" r="42" fill="#000" />
-    </mask>
-  </defs>
-
-  <circle cx="1078" cy="70" r="42" fill="url(#moon-grad)" mask="url(#moon-mask)" />
-
-  <!-- stars, denser and brighter toward the moon, thinning out across the rest of the sky -->
   <circle cx="1020" cy="30" r="2" fill="var(--gold)" opacity="0.6" />
   <circle cx="960" cy="110" r="1.6" fill="var(--gold)" opacity="0.5" />
   <circle cx="1120" cy="150" r="1.8" fill="var(--gold)" opacity="0.55" />
