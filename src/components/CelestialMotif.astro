@@ -1,7 +1,8 @@
-{/* Decorative crescent moon + stars for the hero — a quiet nod to "Moon." Purely decorative: aria-hidden, no interaction. */}
+{/* Decorative crescent moon + scattered stars spanning the hero — a quiet nod to "Moon." Purely decorative: aria-hidden, no interaction. */}
 <svg
   class="celestial-motif"
-  viewBox="0 0 320 240"
+  viewBox="0 0 1200 280"
+  preserveAspectRatio="xMaxYMid slice"
   xmlns="http://www.w3.org/2000/svg"
   aria-hidden="true"
   focusable="false"
@@ -12,22 +13,30 @@
       <stop offset="100%" stop-color="#9C7324" />
     </linearGradient>
     <mask id="moon-mask">
-      <rect width="320" height="240" fill="#fff" />
-      <circle cx="265" cy="48" r="38" fill="#000" />
+      <rect width="1200" height="280" fill="#fff" />
+      <circle cx="1095" cy="56" r="42" fill="#000" />
     </mask>
   </defs>
 
-  <circle cx="248" cy="62" r="38" fill="url(#moon-grad)" mask="url(#moon-mask)" />
+  <circle cx="1078" cy="70" r="42" fill="url(#moon-grad)" mask="url(#moon-mask)" />
 
-  <circle cx="72" cy="36" r="2.2" fill="var(--gold)" opacity="0.6" />
-  <circle cx="108" cy="78" r="1.4" fill="var(--gold)" opacity="0.45" />
-  <circle cx="150" cy="24" r="1.7" fill="var(--accent)" opacity="0.4" />
-  <circle cx="196" cy="118" r="1.4" fill="var(--gold)" opacity="0.5" />
-  <circle cx="44" cy="104" r="1.7" fill="var(--accent)" opacity="0.35" />
-  <circle cx="284" cy="128" r="1.4" fill="var(--gold)" opacity="0.5" />
-  <circle cx="226" cy="150" r="1.2" fill="var(--accent)" opacity="0.4" />
-  <circle cx="130" cy="140" r="1.2" fill="var(--gold)" opacity="0.35" />
+  <!-- stars, denser and brighter toward the moon, thinning out across the rest of the sky -->
+  <circle cx="1020" cy="30" r="2" fill="var(--gold)" opacity="0.6" />
+  <circle cx="960" cy="110" r="1.6" fill="var(--gold)" opacity="0.5" />
+  <circle cx="1120" cy="150" r="1.8" fill="var(--gold)" opacity="0.55" />
+  <circle cx="890" cy="48" r="1.4" fill="var(--accent)" opacity="0.4" />
+  <circle cx="1010" cy="190" r="1.3" fill="var(--gold)" opacity="0.4" />
+  <circle cx="780" cy="90" r="1.6" fill="var(--gold)" opacity="0.45" />
+  <circle cx="700" cy="30" r="1.3" fill="var(--accent)" opacity="0.35" />
+  <circle cx="620" cy="140" r="1.6" fill="var(--gold)" opacity="0.4" />
+  <circle cx="520" cy="60" r="1.3" fill="var(--accent)" opacity="0.35" />
+  <circle cx="440" cy="170" r="1.4" fill="var(--gold)" opacity="0.35" />
+  <circle cx="340" cy="90" r="1.3" fill="var(--accent)" opacity="0.3" />
+  <circle cx="230" cy="40" r="1.4" fill="var(--gold)" opacity="0.3" />
+  <circle cx="150" cy="150" r="1.2" fill="var(--accent)" opacity="0.28" />
+  <circle cx="70" cy="80" r="1.3" fill="var(--gold)" opacity="0.28" />
 
-  <path d="M126 54 L126 66 M120 60 L132 60" stroke="var(--gold)" stroke-width="1.1" stroke-linecap="round" opacity="0.55" />
-  <path d="M60 136 L60 144 M56 140 L64 140" stroke="var(--accent)" stroke-width="1" stroke-linecap="round" opacity="0.4" />
+  <path d="M955 70 L955 84 M948 77 L962 77" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" opacity="0.5" />
+  <path d="M760 140 L760 150 M755 145 L765 145" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" opacity="0.4" />
+  <path d="M480 110 L480 120 M475 115 L485 115" stroke="var(--accent)" stroke-width="1" stroke-linecap="round" opacity="0.32" />
 </svg>
