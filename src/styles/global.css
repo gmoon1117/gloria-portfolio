@@ -311,28 +311,37 @@ main {
 
 /* ── Background art (home page only) ── */
 /* Fixed, full-bleed, scroll-linked background art (see index.astro for
-   markup + the pan script). Panned from the moon at the top down toward the
-   ocean purely via background-position-y — no extra oversized layer, so the
-   browser never scales the image any more than a normal full-bleed cover
-   fit already requires. Softly blurred and washed so it reads as ambient
-   atmosphere behind the content rather than competing with it; the element
-   is oversized by the blur radius so the blur's soft edge falls outside the
-   viewport instead of showing as a rim. */
+   markup + the pan script). The outer wrapper is a plain fixed clipping
+   box; the inner layer carries the image/blur/wash and is panned purely
+   via `transform: translate3d()`, driven by rAF-throttled scroll updates.
+   This matters on mobile Safari specifically: animating `background-position`
+   on a blurred full-screen fixed element forces a repaint of that blur on
+   every scroll tick, which is expensive enough to visibly stutter/flash
+   during iOS's elastic overscroll bounce. transform is compositor-only —
+   the blur is rasterized once and just repositioned, so it stays smooth. */
 .art-parallax {
   position: fixed;
-  top: -20px;
-  left: -20px;
-  right: -20px;
-  bottom: -20px;
+  inset: 0;
   z-index: -1;
+  overflow: hidden;
   pointer-events: none;
+}
+
+.art-parallax-layer {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: calc(100% + 24px);
+  height: calc(150% + 24px);
   filter: blur(6px);
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.46)),
     url('/images/moon-background.jpg');
   background-size: cover;
-  background-position: center 0%;
+  background-position: center top;
   background-repeat: no-repeat;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .hero {

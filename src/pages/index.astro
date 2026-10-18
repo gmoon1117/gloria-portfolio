@@ -5,7 +5,9 @@ import { home, caseStudies, otherWork, site } from '../data/content';
 ---
 
 <BaseLayout title={site.tagline}>
-  <div class="art-parallax" id="art-parallax" aria-hidden="true"></div>
+  <div class="art-parallax" aria-hidden="true">
+    <div class="art-parallax-layer" id="art-parallax-layer"></div>
+  </div>
 
   <section class="hero">
     <div class="hero-intro">
@@ -48,16 +50,26 @@ import { home, caseStudies, otherWork, site } from '../data/content';
 </BaseLayout>
 
 <script>
-  const artEl = document.getElementById('art-parallax');
-  if (artEl) {
-    const update = () => {
+  const artLayer = document.getElementById('art-parallax-layer');
+  if (artLayer) {
+    let ticking = false;
+    const apply = () => {
+      ticking = false;
       const doc = document.documentElement;
-      const scrollable = Math.max(doc.scrollHeight - window.innerHeight, 1);
+      const viewportH = window.innerHeight;
+      const scrollable = Math.max(doc.scrollHeight - viewportH, 1);
       const progress = Math.min(Math.max(window.scrollY / scrollable, 0), 1);
-      artEl.style.backgroundPositionY = `${progress * 100}%`;
+      const maxPan = Math.max(artLayer.offsetHeight - viewportH, 0);
+      artLayer.style.transform = `translate3d(0, -${progress * maxPan}px, 0)`;
     };
-    update();
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
+    const requestUpdate = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(apply);
+      }
+    };
+    apply();
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate);
   }
 </script>
