@@ -1,13 +1,13 @@
-/* ── Palette: warm neutrals + one accent (terracotta) ── */
+/* ── Palette: cool neutrals + one accent (soft slate blue) ── */
 :root {
-  --bg: #faf6f0;
-  --bg-card: #f3ecdf;
-  --bg-card-hover: #eee3d1;
-  --text: #2b2622;
-  --text-muted: #6e6459;
-  --accent: #c1623b;
-  --accent-soft: #f1dccb;
-  --border: #e4dbcc;
+  --bg: #f7f9fb;
+  --bg-card: #eaf0f6;
+  --bg-card-hover: #dde8f0;
+  --text: #212833;
+  --text-muted: #5c6673;
+  --accent: #3f6d96;
+  --accent-soft: #dbe7f1;
+  --border: #dde4ea;
 
   --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
