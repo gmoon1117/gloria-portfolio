@@ -20,6 +20,8 @@ const { cs } = Astro.props;
 ---
 
 <BaseLayout title={`${cs.title} — Gloria`} description={cs.summary}>
+  <div class="scroll-progress"><div class="scroll-progress-bar" id="scroll-progress-bar"></div></div>
+
   <section class="section" style="padding-bottom: 32px;">
     <div class="container">
       <a href="/" class="muted" style="font-size: 0.9rem;">&larr; Back to work</a>
@@ -45,23 +47,32 @@ const { cs } = Astro.props;
     </div>
   </section>
 
-  <section class="cs-section">
+  <section class="cs-section reveal">
     <div class="container">
-      <h2>Context &amp; problem</h2>
+      <div class="cs-section-head">
+        <span class="cs-section-num">01</span>
+        <h2>Context &amp; problem</h2>
+      </div>
       <p>{cs.context}</p>
     </div>
   </section>
 
-  <section class="cs-section">
+  <section class="cs-section reveal">
     <div class="container">
-      <h2>My role</h2>
+      <div class="cs-section-head">
+        <span class="cs-section-num">02</span>
+        <h2>My role</h2>
+      </div>
       <p>{cs.myRole}</p>
     </div>
   </section>
 
-  <section class="cs-section">
+  <section class="cs-section reveal">
     <div class="container">
-      <h2>Process</h2>
+      <div class="cs-section-head">
+        <span class="cs-section-num">03</span>
+        <h2>Process</h2>
+      </div>
       <h3>Research</h3>
       <p>{cs.process.research}</p>
       <PlaceholderImage label="Research artifact — notes, synthesis, or interview highlights" ratio="16/9" />
@@ -72,14 +83,20 @@ const { cs } = Astro.props;
     </div>
   </section>
 
-  <section class="cs-section">
+  <section class="cs-section reveal">
     <div class="container">
-      <h2>Key design decisions &amp; why</h2>
+      <div class="cs-section-head">
+        <span class="cs-section-num">04</span>
+        <h2>Key design decisions &amp; why</h2>
+      </div>
       <div class="decision-list">
-        {cs.decisions.map((d) => (
+        {cs.decisions.map((d, i) => (
           <div class="decision">
-            <h3>{d.title}</h3>
-            <p class="muted">{d.why}</p>
+            <span class="decision-num">{i + 1}</span>
+            <div>
+              <h3>{d.title}</h3>
+              <p class="muted">{d.why}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -87,7 +104,7 @@ const { cs } = Astro.props;
   </section>
 
   {cs.beforeAfter && (
-    <section class="cs-section">
+    <section class="cs-section reveal">
       <div class="container">
         <h2>Before &amp; after</h2>
         <BeforeAfter beforeLabel={cs.beforeAfter.beforeLabel} afterLabel={cs.beforeAfter.afterLabel} />
@@ -95,17 +112,35 @@ const { cs } = Astro.props;
     </section>
   )}
 
-  <section class="cs-section">
+  <section class="cs-section reveal">
     <div class="container">
-      <h2>Outcome</h2>
+      <div class="cs-section-head">
+        <span class="cs-section-num">05</span>
+        <h2>Outcome</h2>
+      </div>
       <p>{cs.outcome}</p>
     </div>
   </section>
 
-  <section class="cs-section">
+  <section class="cs-section reveal">
     <div class="container">
-      <h2>What I’d do next</h2>
+      <div class="cs-section-head">
+        <span class="cs-section-num">06</span>
+        <h2>What I’d do next</h2>
+      </div>
       <p>{cs.next}</p>
     </div>
   </section>
+
+  <script>
+    const bar = document.getElementById('scroll-progress-bar');
+    function updateProgress() {
+      const doc = document.documentElement;
+      const scrollable = doc.scrollHeight - doc.clientHeight;
+      const pct = scrollable > 0 ? (doc.scrollTop / scrollable) * 100 : 0;
+      if (bar) bar.style.width = `${pct}%`;
+    }
+    document.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  </script>
 </BaseLayout>

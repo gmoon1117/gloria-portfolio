@@ -7,16 +7,22 @@ interface Props {
   title: string;
   summary: string;
   heroPlaceholderLabel: string;
+  index: string;
+  featured?: boolean;
 }
 
-const { href, label, title, summary, heroPlaceholderLabel } = Astro.props;
+const { href, label, title, summary, heroPlaceholderLabel, index, featured = false } = Astro.props;
 ---
 
-<a href={href} class="project-card">
-  <PlaceholderImage label={heroPlaceholderLabel} ratio="4/3" rounded={false} />
+<a href={href} class={`project-card reveal${featured ? ' featured' : ''}`}>
+  <div class="card-media">
+    <span class="card-index">{index}</span>
+    <PlaceholderImage label={heroPlaceholderLabel} ratio={featured ? '5/4' : '4/3'} rounded={false} />
+  </div>
   <div class="card-body">
     <div class="card-label">{label}</div>
     <h3>{title}</h3>
     <p class="muted">{summary}</p>
+    <span class="card-arrow">View case study &rarr;</span>
   </div>
 </a>

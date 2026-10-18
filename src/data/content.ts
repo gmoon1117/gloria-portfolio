@@ -12,7 +12,8 @@ export const site = {
   name: 'Gloria',
   fullName: 'Gloria [Last Name]',
   role: 'Product Designer',
-  email: 'YOUR_EMAIL@example.com', // shown on the About page — swap for the address you want public
+  email: 'YOUR_EMAIL@example.com', // shown in the footer — swap for the address you want public
+  linkedinUrl: '#', // replace '#' with your real LinkedIn URL to activate the footer link
   // Shown in the browser tab and link previews
   tagline: 'Gloria — Product Designer',
   description:
