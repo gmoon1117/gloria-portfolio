@@ -1,18 +1,33 @@
 {/* Decorative crescent moon + stars for the hero — a quiet nod to "Moon." Purely decorative: aria-hidden, no interaction. */}
 <svg
   class="celestial-motif"
-  viewBox="0 0 320 260"
+  viewBox="0 0 320 240"
   xmlns="http://www.w3.org/2000/svg"
   aria-hidden="true"
   focusable="false"
 >
-  <circle cx="230" cy="70" r="46" fill="var(--gold)" opacity="0.85" />
-  <circle cx="251" cy="56" r="40" fill="var(--bg)" />
+  <defs>
+    <linearGradient id="moon-grad" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%" stop-color="#E0B968" />
+      <stop offset="100%" stop-color="#9C7324" />
+    </linearGradient>
+    <mask id="moon-mask">
+      <rect width="320" height="240" fill="#fff" />
+      <circle cx="265" cy="48" r="38" fill="#000" />
+    </mask>
+  </defs>
 
-  <path d="M70 30 L73 39 L82 42 L73 45 L70 54 L67 45 L58 42 L67 39 Z" fill="var(--gold)" opacity="0.7" />
-  <path d="M290 150 L292.5 156.5 L299 159 L292.5 161.5 L290 168 L287.5 161.5 L281 159 L287.5 156.5 Z" fill="var(--gold)" opacity="0.6" />
-  <path d="M40 150 L42 155 L47 157 L42 159 L40 164 L38 159 L33 157 L38 155 Z" fill="var(--accent)" opacity="0.45" />
-  <circle cx="190" cy="190" r="2.5" fill="var(--gold)" opacity="0.6" />
-  <circle cx="110" cy="70" r="2" fill="var(--accent)" opacity="0.5" />
-  <circle cx="260" cy="190" r="2" fill="var(--gold)" opacity="0.5" />
+  <circle cx="248" cy="62" r="38" fill="url(#moon-grad)" mask="url(#moon-mask)" />
+
+  <circle cx="72" cy="36" r="2.2" fill="var(--gold)" opacity="0.6" />
+  <circle cx="108" cy="78" r="1.4" fill="var(--gold)" opacity="0.45" />
+  <circle cx="150" cy="24" r="1.7" fill="var(--accent)" opacity="0.4" />
+  <circle cx="196" cy="118" r="1.4" fill="var(--gold)" opacity="0.5" />
+  <circle cx="44" cy="104" r="1.7" fill="var(--accent)" opacity="0.35" />
+  <circle cx="284" cy="128" r="1.4" fill="var(--gold)" opacity="0.5" />
+  <circle cx="226" cy="150" r="1.2" fill="var(--accent)" opacity="0.4" />
+  <circle cx="130" cy="140" r="1.2" fill="var(--gold)" opacity="0.35" />
+
+  <path d="M126 54 L126 66 M120 60 L132 60" stroke="var(--gold)" stroke-width="1.1" stroke-linecap="round" opacity="0.55" />
+  <path d="M60 136 L60 144 M56 140 L64 140" stroke="var(--accent)" stroke-width="1" stroke-linecap="round" opacity="0.4" />
 </svg>
