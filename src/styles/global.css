@@ -1,15 +1,15 @@
-/* ── Palette: moon & stars — ivory/champagne + navy, French blue, gold ── */
+/* ── Palette: black & white first ── */
 :root {
-  --bg: #fbf8f1;
-  --bg-card: #f4edde;
-  --bg-card-hover: #ede0c6;
-  --text: #1c2541;
-  --text-muted: #5d6578;
-  --accent: #3e6690;
-  --accent-soft: #d8e3ee;
-  --gold: #b8872e;
-  --gold-soft: #f0e3c4;
-  --border: #e7dfc8;
+  --bg: #ffffff;
+  --bg-card: #f2f2f2;
+  --bg-card-hover: #e8e8e8;
+  --text: #111111;
+  --text-muted: #6b6b6b;
+  --accent: #111111;
+  --accent-soft: #ededed;
+  --gold: #111111;
+  --gold-soft: #e2e2e2;
+  --border: #dddddd;
 
   --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -116,12 +116,13 @@ p { margin: 0 0 1em; }
   color: var(--bg);
   font-weight: 600;
   font-size: 0.95rem;
-  transition: transform 0.15s ease, background 0.15s ease;
+  border: 1.5px solid var(--text);
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
 }
 
 .btn:hover {
-  background: var(--accent);
-  color: var(--bg);
+  background: var(--bg);
+  color: var(--text);
   transform: translateY(-1px);
 }
 
@@ -142,7 +143,7 @@ p { margin: 0 0 1em; }
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(251, 248, 241, 0.9);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: saturate(140%) blur(8px);
   border-bottom: 1px solid var(--border);
 }
@@ -163,11 +164,10 @@ p { margin: 0 0 1em; }
   font-size: 1.15rem;
 }
 
-.site-nav .brand em,
-.hero-name em {
-  color: var(--gold);
-  font-style: italic;
-  font-weight: 600;
+.site-nav .brand .name-accent,
+.hero-name .name-accent {
+  color: var(--text);
+  font-weight: 400;
 }
 
 .site-nav ul {
@@ -282,9 +282,9 @@ p { margin: 0 0 1em; }
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(ellipse 760px 420px at 88% -8%, rgba(226, 190, 128, 0.55) 0%, rgba(226, 190, 128, 0) 62%),
-    radial-gradient(ellipse 620px 460px at 6% 18%, rgba(130, 161, 196, 0.32) 0%, rgba(130, 161, 196, 0) 60%),
-    linear-gradient(170deg, #f3e9d6 0%, var(--bg) 55%);
+    radial-gradient(ellipse 760px 420px at 88% -8%, rgba(17, 17, 17, 0.08) 0%, rgba(17, 17, 17, 0) 62%),
+    radial-gradient(ellipse 620px 460px at 6% 18%, rgba(17, 17, 17, 0.045) 0%, rgba(17, 17, 17, 0) 60%),
+    linear-gradient(170deg, #eeeeee 0%, var(--bg) 55%);
 }
 
 .hero .container {
@@ -353,7 +353,7 @@ p { margin: 0 0 1em; }
 .project-card:hover {
   transform: translateY(-4px);
   background: var(--bg-card-hover);
-  box-shadow: 0 16px 32px -18px rgba(28, 37, 65, 0.4);
+  box-shadow: 0 16px 32px -18px rgba(17, 17, 17, 0.25);
 }
 
 .project-card .card-media {
