@@ -1,0 +1,16 @@
+---
+interface Props {
+  label: string;
+  ratio?: string; // CSS aspect-ratio value, e.g. "16/9", "1/1"
+  rounded?: boolean;
+}
+
+const { label, ratio = '16/9', rounded = true } = Astro.props;
+---
+
+<div
+  class="placeholder-img"
+  style={`aspect-ratio: ${ratio}; ${rounded ? '' : 'border-radius: 6px;'}`}
+>
+  <span>{label}</span>
+</div>

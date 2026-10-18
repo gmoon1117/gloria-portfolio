@@ -1,0 +1,15 @@
+---
+import PlaceholderImage from './PlaceholderImage.astro';
+
+interface Props {
+  beforeLabel: string;
+  afterLabel: string;
+}
+
+const { beforeLabel, afterLabel } = Astro.props;
+---
+
+<div class="before-after">
+  <PlaceholderImage label={beforeLabel} ratio="4/3" rounded={false} />
+  <PlaceholderImage label={afterLabel} ratio="4/3" rounded={false} />
+</div>

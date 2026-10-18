@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { home, caseStudies, otherWork, site } from '../data/content';
+---
+
+<BaseLayout title={site.tagline}>
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Hi, I’m {site.name} 👋</p>
+      <h1>{home.introLine}</h1>
+      <p class="muted" style="max-width: 520px; font-size: 1.05rem;">{home.introSubline}</p>
+
+      <div class="project-grid">
+        {caseStudies.map((cs) => (
+          <ProjectCard
+            href={`/work/${cs.slug}`}
+            label={cs.cardLabel}
+            title={cs.title}
+            summary={cs.summary}
+            heroPlaceholderLabel={cs.heroPlaceholderLabel}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <h2>Other work</h2>
+      <p class="muted">Smaller projects that didn’t need a full case study.</p>
+      <div class="other-work-grid">
+        {otherWork.map((item) => (
+          <div class="other-work-card">
+            {item.tag && <span class="tag">{item.tag}</span>}
+            <h3>{item.title}</h3>
+            <p class="muted">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+import { nav, site } from '../data/content';
+
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string) {
+  if (href === '/') return currentPath === '/' || currentPath.startsWith('/work');
+  return currentPath === href;
+}
+---
+
+<header class="site-nav">
+  <div class="container">
+    <a href="/" class="brand">{site.name}</a>
+    <ul>
+      {nav.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            target={item.external ? '_blank' : undefined}
+            rel={item.external ? 'noopener noreferrer' : undefined}
+            class={!item.external && isActive(item.href) ? 'active' : ''}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>

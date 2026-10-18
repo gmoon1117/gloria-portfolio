@@ -1,0 +1,22 @@
+---
+import PlaceholderImage from './PlaceholderImage.astro';
+
+interface Props {
+  href: string;
+  label: string;
+  title: string;
+  summary: string;
+  heroPlaceholderLabel: string;
+}
+
+const { href, label, title, summary, heroPlaceholderLabel } = Astro.props;
+---
+
+<a href={href} class="project-card">
+  <PlaceholderImage label={heroPlaceholderLabel} ratio="4/3" rounded={false} />
+  <div class="card-body">
+    <div class="card-label">{label}</div>
+    <h3>{title}</h3>
+    <p class="muted">{summary}</p>
+  </div>
+</a>
