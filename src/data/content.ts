@@ -10,14 +10,16 @@
 
 export const site = {
   name: 'Gloria',
-  fullName: 'Gloria [Last Name]',
+  firstName: 'Gloria',
+  lastName: 'Moon',
+  fullName: 'Gloria Moon',
   role: 'Product Designer',
   email: 'YOUR_EMAIL@example.com', // shown in the footer — swap for the address you want public
   linkedinUrl: '#', // replace '#' with your real LinkedIn URL to activate the footer link
   // Shown in the browser tab and link previews
-  tagline: 'Gloria — Product Designer',
+  tagline: 'Gloria Moon — Product Designer',
   description:
-    'Product design portfolio of Gloria, a product designer in New York focused on research-driven, detail-oriented digital products.',
+    'Product design portfolio of Gloria Moon, a product designer in New York focused on research-driven, detail-oriented digital products.',
 };
 
 export const nav = [
@@ -30,7 +32,9 @@ export const nav = [
 // ── HOME ────────────────────────────────────────────────────────────────
 
 export const home = {
-  // One line mixing role + personality, per your brief:
+  // Your name is the big headline on the page (see src/pages/index.astro) —
+  // these two lines sit underneath it as the tagline + supporting sentence.
+  // introLine mixes role + personality, per your brief:
   // "product designer, researcher, ___, ___"
   // Edit the last two or three words to be your own personality/hobby nods
   // (they'll make more sense once "For Fun" is filled in).

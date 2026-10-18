@@ -163,6 +163,13 @@ p { margin: 0 0 1em; }
   font-size: 1.15rem;
 }
 
+.site-nav .brand em,
+.hero-name em {
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 600;
+}
+
 .site-nav ul {
   list-style: none;
   display: flex;
@@ -313,6 +320,23 @@ p { margin: 0 0 1em; }
   padding: 7px 16px;
   border-radius: 999px;
   margin-bottom: 20px;
+}
+
+.hero-name {
+  display: block;
+  font-size: clamp(3rem, 8vw, 5.75rem);
+  line-height: 1;
+  margin-bottom: 18px;
+  letter-spacing: -0.01em;
+}
+
+.hero-tagline {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-weight: 500;
+  color: var(--text);
+  max-width: 620px;
+  margin-bottom: 10px;
 }
 
 /* ── Project card (home page) ── */
