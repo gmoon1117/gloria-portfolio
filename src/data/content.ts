@@ -33,15 +33,9 @@ export const nav = [
 
 export const home = {
   // Your name is the big headline on the page (see src/pages/index.astro) —
-  // these two lines sit underneath it as the tagline + supporting sentence.
-  // introLine mixes role + personality, per your brief:
-  // "product designer, researcher, ___, ___"
-  // Edit the last two or three words to be your own personality/hobby nods
-  // (they'll make more sense once "For Fun" is filled in).
+  // this single line sits underneath it.
   introLine:
-    'Product designer, researcher, and professional over-explainer of good UX.',
-  introSubline:
-    'I design digital products that are easy to use and nice to look at — currently at Deloitte Digital in New York.',
+    'Currently designing digital products and thoughtful experiences at Deloitte Digital in New York.',
 };
 
 // ── CASE STUDIES ────────────────────────────────────────────────────────
