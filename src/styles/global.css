@@ -283,6 +283,26 @@ main {
 /* ── Hero (home) ── */
 .hero {
   position: relative;
+  padding-bottom: 64px;
+}
+
+.hero-intro {
+  position: relative;
+  padding: 72px 0 48px;
+  margin-bottom: 8px;
+  min-height: clamp(340px, 46vw, 480px);
+  display: flex;
+  align-items: center;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.88)),
+    url('/images/moon-background.jpg');
+  background-size: cover;
+  background-position: center 22%;
+  background-repeat: no-repeat;
+}
+
+.hero-intro .container {
+  width: 100%;
 }
 
 .intro-badge {
