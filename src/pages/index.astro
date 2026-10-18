@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import MoonIcon from '../components/MoonIcon.astro';
 import { home, caseStudies, otherWork, site } from '../data/content';
 ---
 
@@ -9,10 +10,15 @@ import { home, caseStudies, otherWork, site } from '../data/content';
 
   <section class="hero">
     <div class="hero-intro">
-      <div class="container">
-        <h1 class="hero-name">{site.firstName} {site.lastName}</h1>
-        <p class="hero-tagline">{home.introLine}</p>
-        <p class="muted" style="max-width: 520px; font-size: 1.05rem;">{home.introSubline}</p>
+      <div class="container hero-intro-row">
+        <div class="hero-text-col">
+          <h1 class="hero-name">{site.firstName} {site.lastName}</h1>
+          <p class="hero-tagline">{home.introLine}</p>
+          <p class="muted" style="max-width: 520px; font-size: 1.05rem;">{home.introSubline}</p>
+        </div>
+        <div class="hero-moon-col">
+          <MoonIcon class="hero-moon-icon" />
+        </div>
       </div>
     </div>
     <div class="container">
