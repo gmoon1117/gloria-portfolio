@@ -11,6 +11,13 @@
   --gold-soft: #e2e2e2;
   --border: #dddddd;
 
+  /* Frosted "glass" surfaces — used on cards/panels so the background art
+     reads consistently through every content piece, iOS-materials style. */
+  --glass-bg: rgba(255, 255, 255, 0.58);
+  --glass-bg-hover: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.65);
+  --glass-blur: blur(20px) saturate(160%);
+
   --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
@@ -222,8 +229,10 @@ main {
 /* ── Footer ── */
 .site-footer {
   position: relative;
-  background: var(--bg);
-  border-top: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-top: 1px solid var(--glass-border);
   margin-top: 60px;
 }
 
@@ -282,12 +291,20 @@ main {
   border-top: 1px solid var(--border);
 }
 
-/* ── Hero (home) ── */
-/* Fixed, scroll-linked background art. Panned via JS (see src/pages/index.astro)
-   from the moon at the top of the page down toward the ocean as you scroll. */
+/* ── Site-wide background art ── */
+/* Fixed, scroll-linked background art, present behind every page (see
+   BaseLayout.astro for markup + the pan script). Panned from the moon at the
+   top down toward the ocean as you scroll. The source image is natively
+   1086px wide — capping the layer's width there (it's centered) means
+   desktop never upscales it past its real resolution; narrower viewports
+   only ever scale it down, which stays sharp either way. */
 .art-parallax {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100vw, 1086px);
+  height: 100vh;
   z-index: -1;
   overflow: hidden;
   pointer-events: none;
@@ -298,7 +315,7 @@ main {
   top: 0;
   left: 0;
   width: 100%;
-  height: 230%;
+  height: 150%;
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.38)),
     url('/images/moon-background.jpg');
@@ -319,10 +336,6 @@ main {
   min-height: clamp(340px, 46vw, 480px);
   display: flex;
   align-items: center;
-}
-
-.other-work-section {
-  background: var(--bg);
 }
 
 .hero-intro .container {
@@ -376,16 +389,18 @@ main {
 .project-card {
   display: flex;
   flex-direction: column;
-  background: var(--bg-card);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border-radius: var(--radius);
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
 }
 
 .project-card:hover {
   transform: translateY(-4px);
-  background: var(--bg-card-hover);
+  background: var(--glass-bg-hover);
   box-shadow: 0 16px 32px -18px rgba(17, 17, 17, 0.25);
 }
 
@@ -519,7 +534,7 @@ main {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--text-muted);
+  color: #3a3a3a;
   margin-bottom: 2px;
 }
 
@@ -572,10 +587,12 @@ main {
 .decision {
   display: flex;
   gap: 18px;
-  background: var(--bg-card);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
   border-radius: var(--radius);
   padding: 22px 24px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
 }
 
 .decision-num {
@@ -623,6 +640,15 @@ main {
   }
 }
 
+.fun-item {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+
 .fun-item h3 {
   font-size: 1rem;
   margin: 12px 0 4px;
@@ -647,8 +673,10 @@ main {
 }
 
 .other-work-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius);
   padding: 20px 22px;
 }
@@ -664,6 +692,25 @@ main {
 }
 
 /* ── About page ── */
+/* Reusable frosted sheet for prose/content that sits directly over the
+   background art (not already inside a .project-card/.other-work-card/etc). */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: clamp(24px, 4vw, 44px);
+}
+
+.page-heading {
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9), 0 2px 18px rgba(255, 255, 255, 0.75);
+}
+
+.page-heading.muted {
+  color: #3a3a3a;
+}
+
 .about-grid {
   display: grid;
   grid-template-columns: 1fr;
