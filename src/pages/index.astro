@@ -5,6 +5,10 @@ import { home, caseStudies, otherWork, site } from '../data/content';
 ---
 
 <BaseLayout title={site.tagline}>
+  <div class="art-parallax" aria-hidden="true">
+    <div class="art-parallax-layer" id="art-parallax-layer"></div>
+  </div>
+
   <section class="hero">
     <div class="hero-intro">
       <div class="container">
@@ -30,7 +34,7 @@ import { home, caseStudies, otherWork, site } from '../data/content';
     </div>
   </section>
 
-  <section class="section" style="padding-top: 0;">
+  <section class="section other-work-section" style="padding-top: 0;">
     <div class="container">
       <h2>Other work</h2>
       <div class="other-work-grid">
@@ -45,3 +49,19 @@ import { home, caseStudies, otherWork, site } from '../data/content';
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const layer = document.getElementById('art-parallax-layer');
+  if (layer) {
+    const update = () => {
+      const doc = document.documentElement;
+      const scrollable = Math.max(doc.scrollHeight - window.innerHeight, 1);
+      const progress = Math.min(Math.max(window.scrollY / scrollable, 0), 1);
+      const maxPan = layer.offsetHeight - window.innerHeight;
+      layer.style.transform = `translateY(-${progress * Math.max(maxPan, 0)}px)`;
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  }
+</script>
